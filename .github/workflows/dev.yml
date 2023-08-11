@@ -16,9 +16,9 @@ jobs:
         uses: easingthemes/ssh-deploy@main
         with:
           SSH_PRIVATE_KEY: ${{ secrets.MX_TOKEN }}
+          ARGS: "-avz --delete --exclude='/public/uploads'"
           REMOTE_PORT: 22
           SOURCE: ./
           REMOTE_HOST: ${{ secrets.MX_HOST }}
           REMOTE_USER: "root"
           TARGET: /html/wwwroot/actions-test/
-          EXCLUDE: "/uploads/"
