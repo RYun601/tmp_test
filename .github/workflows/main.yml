@@ -20,4 +20,4 @@ jobs:
           SOURCE: ./
           REMOTE_HOST: ${{ secrets.TX_HOST }}
           REMOTE_USER: "root"
-          SERVER_DESTINATION: /home/data/actions-test/
+          TARGET: /home/data/actions-test/
