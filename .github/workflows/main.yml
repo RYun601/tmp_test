@@ -11,12 +11,13 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy to Server
       - uses: actions/checkout@v3
-        env:
-          PASSWORD: ${{ secrets.TX_PWD }}
-          SERVER_PORT: 22
-          FOLDER: ./
-          SERVER_IP: ${{ secrets.TX_HOST }}
-          USERNAME: "root"
+      - name: Deploy to Server
+        uses: easingthemes/ssh-deploy@main
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.TX_TOKEN }}
+          REMOTE_PORT: 22
+          SOURCE: ./
+          REMOTE_HOST: ${{ secrets.TX_HOST }}
+          REMOTE_USER: "root"
           SERVER_DESTINATION: /home/data/actions-test/
