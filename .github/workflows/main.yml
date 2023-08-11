@@ -1,1 +1,22 @@
+name: Deploy MAIN
 
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - README.md
+      - LICENSE
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Deploy to Server
+        env:
+          PASSWORD: ${{ secrets.TX_PWD }}
+          SERVER_PORT: 22
+          FOLDER: ./
+          SERVER_IP: ${{ secrets.TX_HOST }}
+          USERNAME: "root"
+          SERVER_DESTINATION: /home/data/actions-test/
