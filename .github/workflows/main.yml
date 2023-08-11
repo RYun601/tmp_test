@@ -11,8 +11,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
       - name: Deploy to Server
+      - uses: actions/checkout@v3
         env:
           PASSWORD: ${{ secrets.TX_PWD }}
           SERVER_PORT: 22
